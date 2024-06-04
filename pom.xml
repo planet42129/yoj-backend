@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.yhh</groupId>
-    <artifactId>ybi</artifactId>
+    <artifactId>yoj</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-init</name>
     <properties>

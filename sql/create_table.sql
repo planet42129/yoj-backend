@@ -1,10 +1,10 @@
 # 数据库初始化
 
 -- 创建库
-create database if not exists ybi_db;
+create database if not exists PostMapping_db;
 
 -- 切换库
-use ybi_db;
+use yoj_db;
 
 -- 用户表
 create table if not exists user
