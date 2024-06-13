@@ -17,6 +17,7 @@ import com.yhh.yoj.model.enums.QuestionSubmitStatusEnum;
 import com.yhh.yoj.service.QuestionService;
 import com.yhh.yoj.service.QuestionSubmitService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
  * @author hyh
  * @date 2024/6/5
  */
+@Service
 public class JudgeServiceImpl implements JudgeService{
 
     @Resource
@@ -99,7 +101,7 @@ public class JudgeServiceImpl implements JudgeService{
         if (!update) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "题目状态更新错误");
         }
-        QuestionSubmit questionSubmitResult = questionSubmitService.getById(questionId);
+        QuestionSubmit questionSubmitResult = questionSubmitService.getById(questionSubmitId);
         return questionSubmitResult;
     }
 

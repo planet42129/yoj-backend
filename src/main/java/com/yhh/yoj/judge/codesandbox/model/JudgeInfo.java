@@ -2,11 +2,13 @@ package com.yhh.yoj.judge.codesandbox.model;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 判题信息
  */
 @Data
-public class JudgeInfo {
+public class JudgeInfo implements Serializable {
 
     /**
      * 程序执行信息

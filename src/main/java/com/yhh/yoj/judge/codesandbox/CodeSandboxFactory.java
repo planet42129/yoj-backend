@@ -12,21 +12,27 @@ import org.springframework.beans.factory.annotation.Value;
  */
 
 public class CodeSandboxFactory {
-//todo 参数配置化
 
-//    private static String type;
+    static class CodeSandboxGenHelper {
+        private static final CodeSandbox REMOTECODESANDBOX = new RemoteCodeSandbox();
+        private static final CodeSandbox THRIDPARTYCODESANDBOX = new ThirdPartyCodeSandbox();
+        private static final CodeSandbox EXAMPLESANDBOX = new ExampleCodeSandbox();
+    }
 
 
     public static CodeSandbox newInstance(String type) {
         switch(type) {
-            case "example" :
-                return new ExampleCodeSandbox();
             case "remote":
-                return new RemoteCodeSandbox();
+                return CodeSandboxGenHelper.REMOTECODESANDBOX;
             case "thirdParty":
-                return new ThirdPartyCodeSandbox();
+                return CodeSandboxGenHelper.THRIDPARTYCODESANDBOX;
             default:
-                return new ExampleCodeSandbox();
+                return CodeSandboxGenHelper.EXAMPLESANDBOX;
         }
     }
+
+    private CodeSandboxFactory(){}
+
+
+
 }

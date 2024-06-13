@@ -1,6 +1,7 @@
 package com.yhh.yoj.model.vo;
 
 import cn.hutool.json.JSONUtil;
+import com.yhh.yoj.judge.codesandbox.model.JudgeInfo;
 import com.yhh.yoj.model.entity.QuestionSubmit;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
@@ -34,7 +35,7 @@ public class QuestionSubmitVO implements Serializable {
      * 判题信息
      */
 
-//    private JudgeInfo judgeInfo;
+    private JudgeInfo judgeInfo;
 
     /**
      * 判题状态（0 - 待判题、1 - 判题中、2 - 成功、3 - 失败）
@@ -91,10 +92,10 @@ public class QuestionSubmitVO implements Serializable {
         }
         QuestionSubmit questionSubmit = new QuestionSubmit();
         BeanUtils.copyProperties(questionSubmitVO, questionSubmit);
-/*        JudgeInfo judgeInfoObj = questionSubmitVO.getJudgeInfo();
+        JudgeInfo judgeInfoObj = questionSubmitVO.getJudgeInfo();
         if (judgeInfoObj != null) {
             questionSubmit.setJudgeInfo(JSONUtil.toJsonStr(judgeInfoObj));
-        }*/
+        }
         return questionSubmit;
     }
 
@@ -112,7 +113,7 @@ public class QuestionSubmitVO implements Serializable {
         QuestionSubmitVO questionSubmitVO = new QuestionSubmitVO();
         BeanUtils.copyProperties(questionSubmit, questionSubmitVO);
         String judgeInfoStr = questionSubmit.getJudgeInfo();
-//        questionSubmitVO.setJudgeInfo(JSONUtil.toBean(judgeInfoStr, JudgeInfo.class));
+        questionSubmitVO.setJudgeInfo(JSONUtil.toBean(judgeInfoStr, JudgeInfo.class));
         return questionSubmitVO;
     }
 

@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
  * 远程代码沙箱（实际调用接口的沙箱）
  */
 @Slf4j
+//@Component
 public class RemoteCodeSandbox implements CodeSandbox {
 
     // 定义鉴权请求头和密钥
@@ -21,12 +22,24 @@ public class RemoteCodeSandbox implements CodeSandbox {
 
     private static final String AUTH_REQUEST_SECRET = "secretKey";
 
+ /*   @Value("${codesandbox.url}")
+    private String url;
+
+
+    @PostConstruct
+    public void init() {
+        log.info("CodeSandbox URL: {}", url);
+    }*/
+
 
     @Override
     public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) {
         log.info("远程代码沙箱");
-        String url = "http://localhost:8202/executeCode";
+//        String url = "http://localhost:8105/executeCode";
+        String url = "http://47.100.246.109:8105/executeCode";
         String json = JSONUtil.toJsonStr(executeCodeRequest);
+        log.info("URL: {}", url);
+        log.info("Request JSON: {}", json);
         String responseStr = HttpUtil.createPost(url)
                 .header(AUTH_REQUEST_HEADER, AUTH_REQUEST_SECRET)
                 .body(json)
