@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.concurrent.ThreadPoolExecutor;
 
 
 @RestController
@@ -44,7 +45,10 @@ public class QuestionController {
     @Resource
     private QuestionSubmitService questionSubmitService;
 
-    private final static Gson GSON = new Gson();
+    private static final Gson GSON = new Gson();
+
+
+
 
     // region 增删改查
 
